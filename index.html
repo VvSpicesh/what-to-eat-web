@@ -7,17 +7,91 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <meta name="theme-color" content="#F39A63" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="吃什么" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <title>今天吃什么？ · What to Eat</title>
+    <!-- Critical shell: warm page bg before CSS bundle / React mount (no white flash) -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #fff8f2;
+        min-height: 100%;
+        min-height: 100dvh;
+      }
+      #root {
+        min-height: 100%;
+        min-height: 100dvh;
+        background: #fff8f2;
+      }
+      .wte-boot-shell {
+        box-sizing: border-box;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 12px;
+        padding: 16px;
+        background: #fff8f2;
+        color: #3e3128;
+        font-family: system-ui, sans-serif;
+      }
+      .wte-boot-shell__top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 20px 8px 8px;
+      }
+      .wte-boot-shell__mark {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        background: #f39a63;
+        box-shadow: 0 8px 20px rgba(62, 49, 40, 0.12);
+      }
+      .wte-boot-shell__label {
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        opacity: 0.72;
+      }
+      /* Reserve map-ish plane before React/AMap — avoids full-page white */
+      .wte-boot-shell__map {
+        flex: 1 1 auto;
+        min-height: 42dvh;
+        border-radius: 16px;
+        background: linear-gradient(160deg, #f3ebe3 0%, #efe4d8 55%, #e8dccf 100%);
+        border: 1px solid rgba(200, 150, 110, 0.18);
+      }
+    </style>
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png" />
+    <link rel="icon" type="image/svg+xml" href="./icons/icon.svg" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/what-to-eat-web/assets/index-CmEPB1UC.js"></script>
-    <link rel="stylesheet" crossorigin href="/what-to-eat-web/assets/index-zHvdf_kc.css">
-  </head>
+    <script type="module" crossorigin src="/what-to-eat-web/assets/index-CKOG3vG9.js"></script>
+    <link rel="stylesheet" crossorigin href="/what-to-eat-web/assets/index-DmUoObSv.css">
+  <link rel="manifest" href="/what-to-eat-web/manifest.webmanifest"></head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="wte-boot-shell" aria-hidden="true">
+        <div class="wte-boot-shell__top">
+          <div class="wte-boot-shell__mark"></div>
+          <p class="wte-boot-shell__label">What to Eat</p>
+        </div>
+        <div class="wte-boot-shell__map"></div>
+      </div>
+    </div>
+    <div id="overlay-root"></div>
   </body>
 </html>
